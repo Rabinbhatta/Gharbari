@@ -350,43 +350,6 @@ const options: swaggerJsdoc.Options = {
           },
         },
 
-        // Review Schema
-        Review: {
-          type: 'object',
-          properties: {
-            _id: {
-              type: 'string',
-              description: 'Review ID',
-            },
-            property: {
-              type: 'string',
-              description: 'Property ID reference',
-            },
-            user: {
-              type: 'string',
-              description: 'User ID reference',
-            },
-            rating: {
-              type: 'number',
-              minimum: 1,
-              maximum: 5,
-              description: 'Rating from 1 to 5',
-            },
-            comment: {
-              type: 'string',
-              description: 'Review comment',
-            },
-            createdAt: {
-              type: 'string',
-              format: 'date-time',
-            },
-            updatedAt: {
-              type: 'string',
-              format: 'date-time',
-            },
-          },
-        },
-
         Blog: {
   type: "object",
   properties: {
@@ -410,6 +373,35 @@ FAQ: {
     createdAt: { type: "string", format: "date-time" },
   },
 },
+Team: {
+  type: "object",
+  properties: {
+    _id: { type: "string" },
+    name: { type: "string", example: "Rabin Bhattarai" },
+    designation: { type: "string", example: "Property Consultant" },
+    bio: { type: "string" },
+    image: { type: "string" },
+    email: { type: "string", example: "rabin@example.com" },
+    phone: { type: "string", example: "+9779800000000" },
+    isActive: { type: "boolean" },
+    createdAt: { type: "string", format: "date-time" },
+  },
+},
+Review: {
+  type: "object",
+  properties: {
+    _id: { type: "string" },
+    name: { type: "string", example: "Suman Shrestha" },
+    role: { type: "string", example: "Property Buyer" },
+    message: { type: "string" },
+    rating: { type: "number", example: 5 },
+    image: { type: "string" },
+    isActive: { type: "boolean" },
+    createdAt: { type: "string", format: "date-time" },
+  },
+},
+
+
         // Error Response Schema
         Error: {
           type: 'object',

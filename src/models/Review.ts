@@ -1,26 +1,50 @@
-import mongoose from "mongoose";
+// src/models/review.model.ts
+import mongoose, { Schema, Document } from "mongoose";
 
-const reviewSchema = new mongoose.Schema(
+export interface IReview extends Document {
+  name: string;
+  role?: string;
+  message: string;
+  rating: number;
+  image?: string;
+  isActive: boolean;
+}
+
+const ReviewSchema = new Schema<IReview>(
   {
-    property: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Property",
+    name: {
+      type: String,
+      required: true,
+      trim: true,
     },
 
-    user: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
+    role: {
+      type: String,
+      trim: true, // e.g. Buyer, Seller
+    },
+
+    message: {
+      type: String,
+      required: true,
     },
 
     rating: {
       type: Number,
       min: 1,
       max: 5,
+      required: true,
     },
 
-    comment: String,
+    image: {
+      type: String,
+    },
+
+    isActive: {
+      type: Boolean,
+      default: true,
+    },
   },
   { timestamps: true }
 );
 
-export default mongoose.model("Review", reviewSchema);
+export const Review = mongoose.model<IReview>("Review", ReviewSchema);
